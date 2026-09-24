@@ -1,0 +1,35 @@
+# ============================================================
+#  CharacterizationCalc — XRD Module
+#  Render.com deployment configuration
+#  Docs: https://render.com/docs/blueprint-spec
+# ============================================================
+
+services:
+  - type: web
+    name: characterization-calc-xrd
+    runtime: python
+    plan: free                          # Upgrade to starter for always-on
+
+    # ── Build ────────────────────────────────────────────────
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+
+    # ── Start ────────────────────────────────────────────────
+    startCommand: python app.py
+
+    # ── Health check (Render pings this to confirm the app is up) ──
+    healthCheckPath: /
+
+    # ── Environment variables ────────────────────────────────
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"           # Pin to 3.11 — Gradio 4 / pydub require audioop
+                                  # which was removed in Python 3.13+
+      - key: PORT
+        value: "7860"
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: MPLBACKEND
+        value: "Agg"              # Non-interactive matplotlib backend
+
+    # ── Scaling (free tier = 1 instance) ─────────────────────
+    autoDeploy: true              # Auto-deploy on every git push

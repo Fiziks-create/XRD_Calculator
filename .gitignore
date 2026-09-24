@@ -1,0 +1,58 @@
+# ============================================================
+#  CharacterizationCalc — XRD Module  |  .gitignore
+# ============================================================
+
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Virtual environments ────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.env
+
+# ── Jupyter / IPython ───────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── OS clutter ──────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE settings ────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ── Test / coverage ─────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Analysis output artefacts (generated at runtime) ────────
+/tmp/
+*.zip
+*.png
+*.pdf
+
+# ── User data — never commit raw diffraction files ──────────
+data/
+sample_data/
+*.xlsx
+*.xls
+*.csv
+
+# ── Gradio cache ────────────────────────────────────────────
+gradio_cached_examples/
+flagged/

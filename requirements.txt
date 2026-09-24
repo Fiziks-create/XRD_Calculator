@@ -1,0 +1,37 @@
+# ============================================================
+#  CharacterizationCalc — XRD Module
+#  FULLY PINNED dependencies (known-good set for Gradio 4.44.1)
+#
+#  Why everything is pinned: Gradio 4.x is not compatible with the
+#  newest FastAPI / Starlette / Pydantic releases. Leaving them
+#  unpinned makes pip pull the latest versions on every Render build
+#  and the site dies with 502 (TypeError: unhashable type: 'dict',
+#  TypeError: argument of type 'bool' is not iterable).
+#  Do NOT loosen these pins unless you also upgrade Gradio and test.
+# ============================================================
+
+# ── Web framework (Gradio 4 stack) ────────────────────────
+gradio==4.44.1
+gradio_client==1.3.0
+fastapi==0.112.2
+starlette==0.38.6
+uvicorn==0.30.6
+pydantic==2.10.6
+httpx==0.27.2
+huggingface-hub==0.25.2
+markupsafe==2.1.5
+jinja2==3.1.4
+pillow==10.4.0
+orjson==3.10.7
+python-multipart==0.0.12
+
+# ── Scientific core ───────────────────────────────────────
+# numpy >= 2.0 required: backend.py uses np.trapezoid
+numpy==2.1.3
+scipy==1.14.1
+matplotlib==3.9.2
+
+# ── Data I/O ──────────────────────────────────────────────
+pandas==2.2.3
+openpyxl==3.1.5
+xlrd==2.0.1
